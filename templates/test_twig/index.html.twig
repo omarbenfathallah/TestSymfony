@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TestTwigController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/FirstProject/src/Controller/TestTwigController.php'|file_link(0) }}">src/Controller/TestTwigController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/FirstProject/templates/test_twig/index.html.twig'|file_link(0) }}">templates/test_twig/index.html.twig</a></code></li>
+    </ul>
+</div>
+        {% set tab = {'fname' : "jane" ,
+                    'lname' : "doe" } %}
+
+        {{ tab['fname']}}
+        <hr>
+        <table>
+        <tr>  
+        <th> id </th>
+        <th> name </th>
+        <th> email </th>
+        </tr>
+        
+        {% for person in p %}
+        {% if person.id=='1' %}
+        <tr>
+            <td> {{ person.id }} </td>
+            <td>   {{ person.name|upper }} </td>
+            <td>  {{ person.email}} </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+        </table>
+        {{dump(p)}}
+
+        </hr>
+
+        {% if p is empty %}
+        <p> pas de donnee</p>
+        {% endif %}
+
+        {% if 3 in [1,2,3] %}
+        3 present
+        {% endif %}
+        </br>
+        {% if 5 in [1,2,3] %}
+        3 present
+        {% else %}
+        5 non present
+        {% endif %}
+        </br>
+        {% apply upper %}
+        <p> paragraphe paragraphe paragraphe </p>
+        {% endapply %}
+        </br>
+        <a href="{{path('app_teacher')}}"/>go to teacher
+{% endblock %}
